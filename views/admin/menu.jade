@@ -1,0 +1,125 @@
+doctype html
+html
+  head
+    title=title
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')
+    link(rel='stylesheet', href='../stylesheets/main.css')
+
+  body.landing
+    #page-wrapper
+      // Header
+      header#header.alt
+        h1
+          a=title2
+        nav#nav
+          ul
+            li
+              a(href='/admin/order') 訂單管理
+            li
+              a(href='/admin/store') 店家管理
+            li
+              a(href='/admin/menu') 菜單管理  
+            li
+              a(href='/admin/permissions') 權限管理
+            li
+              a(href='/admin/record') 訂購紀錄        
+            li
+              a.button(href='/') 登出
+      // Banner
+      section#banner
+        //- h2 尊重·友善·包容
+        //- p 滿滿的大平台
+        //- ul.actions
+          //- li
+          //-   a.button.special(href='#') Sign Up
+          //- li
+          //-   a.button(href='#') Learn More
+      // Main
+      section#main.container
+        section.box.special
+          header.major
+            h2
+              | 菜單管理
+              br
+              | 
+            //- p
+            //-   | Blandit varius ut praesent nascetur eu penatibus nisi risus faucibus nunc ornare
+            //-   br
+            //-   | 							adipiscing nunc adipiscing. Condimentum turpis massa.
+          //- span.image.featured
+          //-   img(src='images/back.png', alt='')
+          fieldset
+            legend 新增/修改訂單
+            form(method='post', action='order.php')
+              input#oid(type='hidden', name='oid', value='')
+              input#otitle(type='text', name='otitle', placeholder='訂單名稱', value='')
+              select(name='ostore', size='1')
+                | $row )
+                | {
+                | ?>
+                option.ostore(value="<?php echo $row['SID'];?>")
+              input(type='submit', name='insert', value='新增')
+          #window
+            table
+              tr
+                th 刪除
+                th 加訂
+                th Lock
+                th 訂單名稱
+                th 主揪
+                th 店家
+                th 類型
+                th 開單時間
+                th 電話
+              //- | $row )
+              //- | {
+              //- | $store = sql_q("SELECT * FROM store WHERE SID = ?",array($row['SID']));
+              //- | $hunger = sql_q("SELECT name FROM user WHERE account = ?",array($row['account']));
+              //- | foreach($store as $key => $rows2)
+              //- | {
+              //- | $alive = true;
+              //- | if($row['status']=='dead'){$alive=false;}
+              //- | ?>
+              form(method='post', action='order.php')
+                tr.echo(class="<?php $alive ? 'alive':'dead';?>")
+                  td
+                    button.del.btn.btn-info 刪除
+                  td
+                    button.add.btn.btn-info 訂餐
+                  td
+                    button.lock.btn.btn-info 上鎖 
+                  td
+                    a(href="vieworder.php?OID=<?php echo $row['OID'];?>") name
+                  td
+                  td
+                  td
+                  td
+                  td
+                  //- input(type='hidden', name='OID', value="<?php echo $row['OID'];?>")
+
+        
+      // CTA
+      section#cta
+        h2 人人有餐訂
+        p 斷開鎖鏈！斷開一切的牽連！
+        //- form
+          //- .row.uniform(class='50%')
+          //-   .8u(class='12u(mobilep)')
+          //-     input#email(type='email', name='email', placeholder='Email Address')
+          //-   .4u(class='12u(mobilep)')
+          //-     input.fit(type='submit', value='Sign Up')
+      // Footer
+      footer#footer
+        ul.copyright
+          li © ze. All rights reserved.
+          li
+            | Design:HTML5 UP
+    //- // Scripts
+    //- script(src='stylesheets/jquery.min.js')
+    //- script(src='stylesheets/jquery.dropotron.min.js')
+    //- script(src='stylesheets/jquery.scrollgress.min.js')
+    //- script(src='stylesheets/skel.min.js')
+    //- script(src='stylesheets/util.js')
+    //- script(src='stylesheets/main.js')

@@ -1,0 +1,49 @@
+doctype html
+html
+  head
+    title= title
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    //if lte IE 8
+      //- script(src='assets/js/html5shiv.js')
+    link(rel='stylesheet', href='stylesheets/index.css')
+    //if lte IE 9
+      //- link(rel='stylesheet', href='stylesheet/css/ie9.css')
+    //if lte IE 8
+      //- link(rel='stylesheet', href='stylesheet/css/ie8.css')
+    //- noscript
+    //-   link(rel='stylesheet', href="{{{ asset('/stylesheet/noscript.css') }}}")
+    
+  //- body.is-loading
+  body
+    // Wrapper
+    #wrapper
+      // Main
+      section#main
+        header
+          span.avatar
+            img(src='images/food.png', alt='', style='height: 150px; width: 150px;')
+          h1 電算中心 網路應用組
+          p Drink2 廠廠系統
+        footer
+          h2 登入
+          form(method='POST', action='/api/login', accept-charset='UTF-8')
+            label(for='acc') 校務資訊帳號
+            input.form-control(maxlength='15', placeholder='要加s', name='account', type='text', value='')
+            label(for='pwd') 密碼
+            input(name='password', type='password', value='')
+            label(for='msg')=error
+            input.btn.btn-info(type='submit', value='登入')
+
+      footer#footer
+        ul.copyright
+          li 網頁開發 © ze
+          li
+            | Design:
+            a(href='http://html5up.net') HTML5 UP
+    // Scripts
+    //- script.
+    //-   if ('addEventListener' in window) {
+    //-   window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\\bis-loading\b/, ''); });
+    //-   document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\\.0)/) ? ' is-ie' : '');
+    //-   }
